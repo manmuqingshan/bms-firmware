@@ -76,6 +76,7 @@
 #define APP_ID_MEAS_IC_TEMP          0x75
 #define APP_ID_MEAS_MCU_TEMP         0x76
 #define APP_ID_MEAS_MOSFET_TEMP      0x77
+#define APP_ID_MEAS_SHUNT_TEMP       0x78
 #define APP_ID_MEAS_SOC              0x7C
 #define APP_ID_MEAS_ERROR_FLAGS      0x7E
 #define APP_ID_MEAS_BMS_STATE        0x7F

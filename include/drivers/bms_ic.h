@@ -171,6 +171,10 @@ struct bms_ic_data
     /** MOSFET temperature (°C) */
     float mosfet_temp;
 #endif
+#ifdef CONFIG_BMS_IC_CURRENT_MONITORING
+    /** Shunt temperature (°C) */
+    float shunt_temp;
+#endif
 
     /** Actual number of cells connected (may be less than CONFIG_BMS_IC_MAX_CELLS) */
     uint8_t connected_cells;

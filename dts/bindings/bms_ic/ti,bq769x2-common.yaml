@@ -100,6 +100,24 @@ properties:
 
       See include/zephyr/dt-bindings/bms_ic/bq769x2.h for allowed values.
 
+  shunt-temp-pin:
+    type: int
+    enum:
+      - 0 # CFETOFF
+      - 1 # DFETOFF
+      - 2 # ALERT
+      - 3 # TS1
+      - 4 # TS2
+      - 5 # TS3
+      - 6 # HDQ
+      - 7 # DCHG
+      - 8 # DDSG
+    description: |
+      Pin used for shunt temperature sensing. The *-pin-config property of that pin has to be
+      configured accordingly.
+
+      See include/zephyr/dt-bindings/bms_ic/bq769x2.h for allowed values.
+
   auto-pdsg:
     type: boolean
     description: |

@@ -725,6 +725,15 @@ static int bq769x2_read_temperatures(const struct device *dev, struct bms_ic_dat
     }
 #endif
 
+#ifdef CONFIG_BMS_IC_CURRENT_MONITORING
+    /* Read shunt temperature if a pin was defined in Devicetree */
+    if (config->shunt_temp_pin < ARRAY_SIZE(config->pin_config)) {
+        err |= bq769x2_direct_read_i2(dev, BQ769X2_CMD_TEMP_CFETOFF + config->shunt_temp_pin * 2U,
+                                      &temp);
+        ic_data->shunt_temp = (temp * 0.1F) - 273.15F;
+    }
+#endif
+
     return err == 0 ? 0 : -EIO;
 }
 
@@ -1004,6 +1013,7 @@ static const struct bms_ic_driver_api bq769x2_driver_api = {
         .cell_temp_pins = DT_INST_PROP(index, cell_temp_pins),                             \
         .num_cell_temps = DT_INST_PROP_LEN(index, cell_temp_pins),                         \
         .fet_temp_pin = DT_INST_PROP_OR(index, fet_temp_pin, UINT8_MAX),                   \
+        .shunt_temp_pin = DT_INST_PROP_OR(index, shunt_temp_pin, UINT8_MAX),               \
         .crc_enabled = DT_INST_PROP(index, crc_enabled),                                   \
         .auto_pdsg = DT_INST_PROP(index, auto_pdsg),                                       \
         .reg0_config = DT_INST_PROP(index, reg0_config),                                   \

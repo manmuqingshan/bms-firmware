@@ -57,6 +57,7 @@ struct bms_ic_bq769x2_config
     uint8_t cell_temp_pins[CONFIG_BMS_IC_MAX_THERMISTORS];
     uint8_t num_cell_temps;
     uint8_t fet_temp_pin;
+    uint8_t shunt_temp_pin;
     bool crc_enabled;
     bool auto_pdsg;
     uint8_t reg0_config;

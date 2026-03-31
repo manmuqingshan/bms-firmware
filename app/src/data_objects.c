@@ -224,6 +224,11 @@ THINGSET_ADD_ITEM_FLOAT(APP_ID_MEAS, APP_ID_MEAS_MOSFET_TEMP, "rMOSFETTemp_degC"
                         &bms.ic_data.mosfet_temp, 1, THINGSET_ANY_R, TS_SUBSET_LIVE);
 #endif
 
+#ifdef CONFIG_BMS_IC_CURRENT_MONITORING
+THINGSET_ADD_ITEM_FLOAT(APP_ID_MEAS, APP_ID_MEAS_SHUNT_TEMP, "rShuntTemp_degC",
+                        &bms.ic_data.shunt_temp, 1, THINGSET_ANY_R, TS_SUBSET_LIVE);
+#endif
+
 THINGSET_ADD_ITEM_FLOAT(APP_ID_MEAS, APP_ID_MEAS_SOC, "rSOC_pct", &bms.soc, 1, THINGSET_ANY_R,
                         TS_SUBSET_LIVE);
 
