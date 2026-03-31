@@ -56,9 +56,11 @@
 		used-cell-channels = <0xFFFF>;
 		/* all NTCs configured with 18k pull-up */
 		ts1-pin-config = <0x07>;
+		dfetoff-pin-config = <0x07>;
 		dchg-pin-config = <0x07>;
 		cell-temp-pins = <BQ769X2_PIN_TS1>;
 		fet-temp-pin = <BQ769X2_PIN_DCHG>;
+		shunt-temp-pin = <BQ769X2_PIN_DFETOFF>;
 		board-max-current = <200>;
 		shunt-resistor-uohm = <1500>;
 		status = "okay";

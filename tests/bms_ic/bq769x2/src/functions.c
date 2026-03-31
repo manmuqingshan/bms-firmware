@@ -505,6 +505,18 @@ ZTEST(bq769x2_functions, test_apply_temp_limits)
                   bq769x2_emul_get_data_mem(bms_ic_emul, 0x9262));
 }
 
+ZTEST(bq769x2_functions, test_read_shunt_temp)
+{
+    /* 25°C = 298.15 K = 2981 in 0.1K units */
+    int16_t raw = 2981;
+    bq769x2_emul_set_direct_mem(bms_ic_emul, 0x6C, raw & 0xFF);
+    bq769x2_emul_set_direct_mem(bms_ic_emul, 0x6D, (raw >> 8) & 0xFF);
+
+    int err = bms_ic_read_data(bms.ic_dev, BMS_IC_DATA_TEMPERATURES);
+    zassert_equal(0, err);
+    zassert_within(25.0F, bms.ic_data.shunt_temp, 0.1F);
+}
+
 static void *bq769x2_setup(void)
 {
     common_setup_bms_defaults(&bms);
